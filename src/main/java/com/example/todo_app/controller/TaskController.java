@@ -1,5 +1,8 @@
 package com.example.todo_app.controller;
 
-public class TaskController {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class TaskController {
+	
 }
