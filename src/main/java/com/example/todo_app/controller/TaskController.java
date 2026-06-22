@@ -19,7 +19,7 @@ public class TaskController {
 	
 	/**
 	 * 一覧画面へアクセス
-	 * 全タスクデータを取得し、Viewへ渡す → list.htmlへ遷移
+	 * 全タスクデータを取得し、Modelへ渡す → list.htmlへ遷移
 	 * @param model
 	 * @return
 	 */

@@ -27,7 +27,7 @@
 					<form th:action="@{/task/edit}" method="post">
 						<input type="hidden" name="taskId" th:value="*{taskId}">
 						<button type="submit">変更</button>
-					</form><br>
+					</form>
 					<form th:action="@{/task/delete}" method="post">
 						<input type="hidden" name="taskId" th:value="*{taskId}">
 						<button type="submit">削除</button>
