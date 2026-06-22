@@ -3,10 +3,12 @@ package com.example.todo_app.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.todo_app.dto.TaskDto;
 import com.example.todo_app.entity.TaskEntity;
+import com.example.todo_app.mapper.TaskMapper;
 
 /**
  * タスクサービス
@@ -15,6 +17,16 @@ import com.example.todo_app.entity.TaskEntity;
 @Service
 public class TaskService {
 	
+	@Autowired
+	private TaskMapper taskMapper;
+	
+	/**
+	 * 全タスクデータを取得
+	 * @return タスクリスト（Dto）
+	 */
+	public List<TaskDto> selectAll(){
+		return toDtoList(taskMapper.selectAll());
+	}
 	
 	/**
 	 * Entityリスト → Dtoリスト 変換
