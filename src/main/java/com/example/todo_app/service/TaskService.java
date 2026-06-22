@@ -29,6 +29,24 @@ public class TaskService {
 	}
 	
 	/**
+	 * IDに該当するタスクデータを取り出す
+	 * @param taskId
+	 * @return タスクデータ（Dto）
+	 */
+	public TaskDto selectById(Integer taskId) {
+		TaskEntity taskEntity = taskMapper.selectById(taskId);
+		return taskEntity.toDto();
+	}
+	
+	/**
+	 * タスク登録
+	 * @param taskDto
+	 */
+	public void insert(TaskDto taskDto) {
+		taskMapper.insert(taskDto.toEntity());
+	}
+	
+	/**
 	 * Entityリスト → Dtoリスト 変換
 	 * @param entityList
 	 * @return Dtoリスト

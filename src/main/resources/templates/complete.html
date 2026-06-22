@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>完了画面</title>
 </head>
 <body>
-
+	<h1>完了画面</h1>
+	<span>The data was successfully </span>
+	<span th:text="${success}"></span><br>
+	<a th:href="@{/task/list}">go to list</a>
 </body>
 </html>

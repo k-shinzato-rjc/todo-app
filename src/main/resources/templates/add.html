@@ -2,9 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>タスク登録画面</title>
 </head>
 <body>
-
+	<h1>新規登録</h1>
+	<div>登録タスクを入力してください</div>
+	<form th:action="@{/task/confirm}" method="post" th:object="${form}">
+		<label id="title">タイトル</label>
+		<input type="text" th:field="*{title}"><br>
+		<label id="description">説明</label>
+		<input type="text" th:field="*{description}"><br>
+		<label id="deadline">期限</label>
+		<input type="date" th:field="*{deadline}"><br>
+		<input type="hidden" name="submitView" value="add">
+		<button type="submit">確認</button> &nbsp;
+	</form>
+	<a th:href="@{/task/list}">戻る</a>
 </body>
 </html>
