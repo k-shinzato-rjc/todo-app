@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class TaskEntity {
 	
-	// タスクId（主キー） 読み取り専用
+	// タスクId（主キー）
 	private Integer taskId;
 	// タスク名
 	private String title;
@@ -25,9 +25,9 @@ public class TaskEntity {
 	private String status;
 	// 登録ユーザーID
 	private Integer userId;
-	// 登録日　読み取り専用
+	// 登録日
 	private LocalDate createdAt;
-	// 更新日 読み取り専用
+	// 更新日
 	private LocalDate updatedAt;
 	// 削除フラグ（0:有効 1:無効）
 	private Integer deleteFlg;

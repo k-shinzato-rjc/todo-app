@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.todo_app.dto.TaskDto;
 import com.example.todo_app.entity.TaskEntity;
@@ -15,6 +16,7 @@ import com.example.todo_app.mapper.TaskMapper;
  * @author koki_shinzato
  */
 @Service
+@Transactional
 public class TaskService {
 	
 	@Autowired
@@ -44,6 +46,14 @@ public class TaskService {
 	 */
 	public void insert(TaskDto taskDto) {
 		taskMapper.insert(taskDto.toEntity());
+	}
+	
+	/**
+	 * タスク更新
+	 * @param taskDto
+	 */
+	public void update(TaskDto taskDto) {
+		taskMapper.update(taskDto.toEntity());
 	}
 	
 	/**
