@@ -29,7 +29,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<form th:action="@{/task/delete}" method="post" th:object="${task}">
+	<form th:action="@{/task/deleteComp}" method="post" th:object="${task}">
 		<input type="hidden" th:field="*{taskId}">
 		<button type="submit">完了</button>
 	</form>

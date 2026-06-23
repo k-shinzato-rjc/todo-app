@@ -149,7 +149,7 @@ public class TaskController {
 	 * @param redirectAttributes
 	 * @return
 	 */
-	@PostMapping("/task/delete")
+	@PostMapping("/task/deleteComp")
 	public String delete(@RequestParam Integer taskId, RedirectAttributes redirectAttributes) {
 		taskService.delete(taskId);
 		redirectAttributes.addAttribute("submitView", "delete");
