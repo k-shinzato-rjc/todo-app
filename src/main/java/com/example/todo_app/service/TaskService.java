@@ -57,6 +57,14 @@ public class TaskService {
 	}
 	
 	/**
+	 * ID指定でタスク削除
+	 * @param taskId
+	 */
+	public void delete(Integer taskId) {
+		taskMapper.deleteById(taskId);
+	}
+	
+	/**
 	 * Entityリスト → Dtoリスト 変換
 	 * @param entityList
 	 * @return Dtoリスト
