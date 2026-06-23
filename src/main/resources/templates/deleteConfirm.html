@@ -1,38 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>削除確認画面</title>
+    <meta charset="UTF-8">
+    <title>削除確認画面</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .warning-box {
+            background: #fff1f2;
+            border-left: 5px solid var(--danger-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #991b1b;
+            border-radius: 4px;
+        }
+        /* 改行させないためのスタイル */
+        .status-text {
+            display: inline-block;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
-	<h1>タスク削除</h1>
-	<div>下記のタスクを削除しますか？</div><br>
-	<table border="1">
-		<thead>
-			<tr>
-				<th>タイトル</th>
-				<th>説明</th>
-				<th>期限</th>
-				<th>ステータス</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:object="${task}">
-				<label for="title">タイトル</label>
-				<td th:text="*{title}"></td>
-				<label for="description">説明</label>
-				<td th:text="*{description}"></td>
-				<label for="deadline">期限</label>
-				<td th:text="*{deadline}"></td>
-				<label for="status">ステータス</label>
-				<td th:text="*{status}"></td>
-			</tr>
-		</tbody>
-	</table>
-	<form th:action="@{/task/deleteComp}" method="post" th:object="${task}">
-		<input type="hidden" th:field="*{taskId}">
-		<button type="submit">完了</button>
-	</form>
-	<a th:href="@{/task/list}">戻る</a>
+    <div class="container">
+        <h1>タスク削除</h1>
+        <div class="warning-box">
+            <strong>警告：</strong>以下のタスクを削除しますか？この操作は取り消せません。
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>タイトル</th>
+                    <th>説明</th>
+                    <th>期限</th>
+                    <th>ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:object="${task}">
+                    <td th:text="*{title}"></td>
+                    <td th:text="*{description}"></td>
+                    <td th:text="*{deadline}"></td>
+                    <td>
+                        <span class="status-text" th:switch="*{status}">
+                            <th:block th:case="0">未着手</th:block>
+                            <th:block th:case="1">作業中</th:block>
+                            <th:block th:case="2">完了</th:block>
+                            <th:block th:case="*">不明</th:block>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 30px; display: flex; gap: 15px; align-items: center;">
+            <form th:action="@{/task/deleteComp}" method="post" th:object="${task}">
+                <input type="hidden" th:field="*{taskId}">
+                <button type="submit" class="btn btn-danger">削除を確定する</button>
+            </form>
+            <a th:href="@{/task/list}" style="color: #64748b;">戻る</a>
+        </div>
+    </div>
 </body>
 </html>
