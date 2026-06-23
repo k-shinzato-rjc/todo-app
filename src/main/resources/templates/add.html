@@ -6,14 +6,18 @@
 </head>
 <body>
 	<h1>新規登録</h1>
-	<div>登録タスクを入力してください</div>
+	<div>登録タスクを入力してください</div><br>
 	<form th:action="@{/task/confirm}" method="post" th:object="${form}">
-		<label id="title">タイトル</label>
+		<label for="title">タイトル</label>
 		<input type="text" th:field="*{title}"><br>
-		<label id="description">説明</label>
+		<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color : red;"></div>
+		<label for="description">説明</label>
 		<input type="text" th:field="*{description}"><br>
-		<label id="deadline">期限</label>
+		<div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color : red;"></div>
+		<label for="deadline">期限</label>
 		<input type="date" th:field="*{deadline}"><br>
+		<div th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}" style="color : red;"></div>
+		<input type="hidden" name="status" value="0">
 		<input type="hidden" name="submitView" value="add">
 		<button type="submit">確認</button> &nbsp;
 	</form>

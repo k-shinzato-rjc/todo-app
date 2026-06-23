@@ -26,6 +26,12 @@ public interface TaskMapper {
 	void insert(TaskEntity taskEntity);
 	
 	/**
+	 * タスク更新
+	 * @param taskId　変更タスクID
+	 */
+	void update(TaskEntity taskEntity);
+	
+	/**
 	 * ID指定でタスクを取得
 	 * @param taskId
 	 * @return タスクデータ（Entity）

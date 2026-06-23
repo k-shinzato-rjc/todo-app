@@ -3,6 +3,7 @@ package com.example.todo_app.dto;
 import java.time.LocalDate;
 
 import com.example.todo_app.entity.TaskEntity;
+import com.example.todo_app.form.TaskForm;
 
 import lombok.Data;
 
@@ -13,7 +14,7 @@ import lombok.Data;
 @Data
 public class TaskDto {
 
-	// タスクId（主キー） 読み取り専用
+	// タスクId（主キー）
 	private Integer taskId;
 	// タスク名
 	private String title;
@@ -25,9 +26,9 @@ public class TaskDto {
 	private String status;
 	// 登録ユーザーID
 	private Integer userId;
-	// 登録日　読み取り専用
+	// 登録日
 	private LocalDate createdAt;
-	// 更新日 読み取り専用
+	// 更新日
 	private LocalDate updatedAt;
 	// 削除フラグ（0:有効 1:無効）
 	private Integer deleteFlg;
@@ -49,5 +50,24 @@ public class TaskDto {
 		taskEntity.setDeleteFlg(deleteFlg);
 		
 		return taskEntity;
+	}
+	
+	/**
+	 * Dto → Form 変換
+	 * @return タスクデータ（Form）
+	 */
+	public TaskForm toForm() {
+		TaskForm taskForm = new TaskForm();
+		taskForm.setTaskId(taskId);
+		taskForm.setTitle(title);
+		taskForm.setDescription(description);
+		taskForm.setDeadline(deadline);
+		taskForm.setStatus(status);
+		taskForm.setUserId(userId);
+		taskForm.setCreatedAt(createdAt);
+		taskForm.setUpdatedAt(updatedAt);
+		taskForm.setDeleteFlg(deleteFlg);
+		
+		return taskForm;		
 	}
 }

@@ -14,4 +14,12 @@
     	INSERT INTO tbl_todo (title,description,deadline)
     	VALUES (#{title}, #{description}, #{deadline})
     </insert>
+    <update id="update" parameterType="com.example.todo_app.entity.TaskEntity">
+    	UPDATE tbl_todo
+    	SET "title"=#{title}
+    		,"description"=#{description}
+    		,"deadline"=#{deadline}
+    		,"status"=#{status}
+    	WHERE "taskId" = #{taskId}
+    </update>
 </mapper>

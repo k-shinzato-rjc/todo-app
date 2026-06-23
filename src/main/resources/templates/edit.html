@@ -2,9 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>タスク変更画面</title>
 </head>
 <body>
-
+	<h1>タスク変更</h1>
+	<div>変更内容を入力してください</div><br>
+	<form th:action="@{/task/confirm}" method="post" th:object="${form}">
+		<input type="hidden" th:field="*{taskId}">
+		<label for="title">タイトル</label>
+		<input type="text" th:field="*{title}"><br>
+		<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color : red;"></div>
+		<label for="description">説明</label>
+		<input type="text" th:field="*{description}"><br>
+		<div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color : red;"></div>
+		<label for="deadline">期限</label>
+		<input type="date" id="deadline" name="deadline" th:value="${#temporals.format(form.deadline, 'yyyy-MM-dd')}"><br>
+		<div th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}" style="color : red;"></div>
+		<label for="status">ステータス</label>
+		<select th:field="*{status}">
+			<option value="0">未着手</option>
+			<option value="1">作業中</option>
+			<option value="2">完了</option>
+		</select><br>
+		<input type="hidden" name="submitView" value="edit">
+		<button type="submit">確認</button>
+	</form>
+	<a th:href="@{/task/list}">戻る</a>
 </body>
 </html>
