@@ -18,4 +18,17 @@ public interface TaskMapper {
 	 * @return タスクリスト（Entity)
 	 */
 	List<TaskEntity> selectAll();
+	
+	/**
+	 * タスク登録
+	 * @param taskEntity タスクデータ（Entity）
+	 */
+	void insert(TaskEntity taskEntity);
+	
+	/**
+	 * ID指定でタスクを取得
+	 * @param taskId
+	 * @return タスクデータ（Entity）
+	 */
+	TaskEntity selectById(Integer taskId);
 }

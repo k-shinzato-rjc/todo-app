@@ -2,9 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>確認画面</title>
 </head>
 <body>
-
+	<h1>確認画面</h1>
+	<div>下記の内容で登録します</div>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>タイトル</th>
+				<th>説明</th>
+				<th>期限</th>
+			</tr>
+		</thead>
+		<tbody th:object="${form}">
+			<tr>
+				<td th:text="*{title}"></td>
+				<td th:text="*{description}"></td>
+				<td th:text="*{deadline}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<form th:action="@{/task/save}" method="post" th:object="${form}">
+		<input type="hidden" th:field="*{title}">
+		<input type="hidden" th:field="*{description}">
+		<input type="hidden" th:field="*{deadline}">
+		<input type="hidden" th:field="*{submitView}">
+		<button type="submit">完了</button>
+	</form>
+	<form th:action="@{/back}" method="post" th:object="${form}">
+		<input type="hidden" th:field="*{title}">
+		<input type="hidden" th:field="*{description}">
+		<input type="hidden" th:field="*{deadline}">
+		<input type="hidden" th:field="*{submitView}">
+		<button type="submit">戻る</button>
+	</form>
 </body>
 </html>

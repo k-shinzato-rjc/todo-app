@@ -2,6 +2,10 @@ package com.example.todo_app.form;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import com.example.todo_app.dto.TaskDto;
 
 import lombok.Data;
@@ -14,22 +18,37 @@ public class TaskForm {
 	
 	// タスクId（主キー） 読み取り専用
 	private Integer taskId;
+	
 	// タスク名
+	@NotBlank
+	@Size(max=100)
 	private String title;
+	
 	// タスク詳細
+	@Size(max=200)
 	private String description;
-	// 締切
+	
+	// 期限
+	@NotNull
 	private LocalDate deadline;
+	
 	// 進捗状況（未着手/作業中/完了)
 	private String status;
+	
 	// 登録ユーザーID
 	private Integer userId;
+	
 	// 登録日　読み取り専用
 	private LocalDate createdAt;
+	
 	// 更新日 読み取り専用
 	private LocalDate updatedAt;
+	
 	// 削除フラグ（0:有効 1:無効）
 	private Integer deleteFlg;
+	
+	// 転送元画面 判別用
+	private String submitView;
 	
 	/**
 	 * Form → Dto 変換

@@ -6,4 +6,12 @@
         WHERE "deleteFlg" = 0
         ORDER BY deadline ASC
     </select>
+    <select id="selectById" parameterType="int" resultType="com.example.todo_app.entity.TaskEntity">
+    	SELECT * FROM tbl_todo
+    	WHERE "taskId" = #{taskId}
+    </select>
+    <insert id="insert" parameterType="com.example.todo_app.entity.TaskEntity">
+    	INSERT INTO tbl_todo (title,description,deadline)
+    	VALUES (#{title}, #{description}, #{deadline})
+    </insert>
 </mapper>
