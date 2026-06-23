@@ -32,6 +32,12 @@ public interface TaskMapper {
 	void update(TaskEntity taskEntity);
 	
 	/**
+	 * ID指定でタスク削除
+	 * @param taskid 削除対象タスクID
+	 */
+	void deleteById(Integer taskid);
+	
+	/**
 	 * ID指定でタスクを取得
 	 * @param taskId
 	 * @return タスクデータ（Entity）

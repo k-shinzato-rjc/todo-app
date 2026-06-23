@@ -16,10 +16,14 @@
     </insert>
     <update id="update" parameterType="com.example.todo_app.entity.TaskEntity">
     	UPDATE tbl_todo
-    	SET "title"=#{title}
-    		,"description"=#{description}
-    		,"deadline"=#{deadline}
-    		,"status"=#{status}
+    	SET "title" = #{title}
+    		,"description" = #{description}
+    		,"deadline" = #{deadline}
+    		,"status" = #{status}
     	WHERE "taskId" = #{taskId}
     </update>
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM tbl_todo
+    	WHERE "taskId" = #{taskId}
+    </delete>
 </mapper>

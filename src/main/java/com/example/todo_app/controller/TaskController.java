@@ -130,6 +130,33 @@ public class TaskController {
 	}
 	
 	/**
+	 * 一覧画面テーブル内の削除ボタン押下
+	 * IDを受け取り、該当タスクをModelへ渡す　→ 削除確認画面(deleteConfirm.html）へ遷移
+	 * @param taskId
+	 * @param model
+	 * @return
+	 */
+	@PostMapping("/task/deleteConf")
+	public String deleteConf(@RequestParam("taskId") Integer taskId, Model model) {
+		model.addAttribute("task", taskService.selectById(taskId));
+		return "deleteConfirm";
+	}
+	
+	/**
+	 * 削除確認画面で完了ボタンを押下
+	 * 削除処理 → 完了画面表示処理へリダイレクト
+	 * @param taskId
+	 * @param redirectAttributes
+	 * @return
+	 */
+	@PostMapping("/task/delete")
+	public String delete(@RequestParam Integer taskId, RedirectAttributes redirectAttributes) {
+		taskService.delete(taskId);
+		redirectAttributes.addAttribute("submitView", "delete");
+		return "redirect:/task/complete";
+	}
+	
+	/**
 	 * リダイレクトで受け取った遷移元文字列に該当した成功メッセージをModelへ渡す → 完了画面へ遷移
 	 * @param taskId
 	 * @param model
