@@ -7,7 +7,7 @@
 <body>
 	<h1>タスク削除</h1>
 	<div>下記のタスクを削除しますか？</div><br>
-	<table>
+	<table border="1">
 		<thead>
 			<tr>
 				<th>タイトル</th>
@@ -33,5 +33,6 @@
 		<input type="hidden" th:field="*{taskId}">
 		<button type="submit">完了</button>
 	</form>
+	<a th:href="@{/task/list}">戻る</a>
 </body>
 </html>
