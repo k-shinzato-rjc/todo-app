@@ -20,7 +20,7 @@ public class TaskForm {
 	private Integer taskId;
 	
 	// タスク名
-	@NotBlank(message="Titleを入力してください。")
+	@NotBlank(message="タイトルを入力してください。")
 	@Size(max=100, message="100文字以内で入力してください。")
 	private String title;
 	

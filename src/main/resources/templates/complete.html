@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>完了画面</title>
+    <meta charset="UTF-8">
+    <title>完了画面</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .complete-container {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .success-icon {
+            font-size: 4rem;
+            color: #10b981; /* 緑色 */
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-	<h1>完了画面</h1>
-	<span>The data was successfully </span>
-	<span th:text="${success}"></span><br>
-	<a th:href="@{/task/list}">go to list</a>
+    <div class="container complete-container">
+        <div class="success-icon">✓</div>
+        <h1>完了しました</h1>
+        <div class="message">
+            <span th:text="${success}"></span>
+        </div>
+        <div>
+            <a th:href="@{/task/list}" class="btn btn-primary">一覧画面へ戻る</a>
+        </div>
+    </div>
 </body>
 </html>
